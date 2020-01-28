@@ -18,6 +18,8 @@ class LoggingFilter implements javax.servlet.Filter {
 	public void init(FilterConfig filterConfig) throws ServletException {
 	}
 
+	//go into servelet container befpre upi fp tp dos[atcjer servlet do this
+	//peice of code
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response,
 			FilterChain chain) throws IOException, ServletException {
@@ -28,6 +30,7 @@ class LoggingFilter implements javax.servlet.Filter {
 		String uri = httpServletRequest.getRequestURI();
 		this.log.info("new request for " + uri + ".");
 		long time = System.currentTimeMillis();
+		//we have process the request now send it down the chain
 		chain.doFilter(request, response);
 		long delta = System.currentTimeMillis() - time;
 		this.log.info("request for " + uri + " took " + delta + "ms");

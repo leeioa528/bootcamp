@@ -8,6 +8,7 @@ import org.springframework.web.client.RestTemplate;
 @SpringBootApplication
 public class BootcampApplication {
 
+	// client used to make http calls to http services
 	@Bean
 	RestTemplate restTemplate() {
 		return new RestTemplate();

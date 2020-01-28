@@ -7,9 +7,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+//this tells spring that this is an http api, or end point
 @RestController
 class IsbnRestController {
 
+	// pointer to rest template
 	private final RestTemplate restTemplate;
 
 	IsbnRestController(RestTemplate restTemplate) {
@@ -20,7 +22,7 @@ class IsbnRestController {
 	@GetMapping("/books/{isbn}")
 	String lookupBookByIsbn(@PathVariable("isbn") String isbn) {
 		ResponseEntity<String> exchange = this.restTemplate.exchange(
-				"https://www.googleapis.com/books/v1/volumes?q=isbn:" + isbn,
+				"https://www.googleapis.com/books/v1/volumes?q=isbn:1449374646",
 				HttpMethod.GET, null, String.class);
 		return exchange.getBody();
 	}
